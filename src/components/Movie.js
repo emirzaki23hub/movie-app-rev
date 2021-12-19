@@ -1,11 +1,9 @@
 import React from "react";
-import { Card, Row, Col} from "react-bootstrap";
-import './styles/Movie.css'
+import { Card, Row, Col } from "react-bootstrap";
+import "./styles/Movie.css";
 
 const Movie = (props) => {
   const FavouriteComponent = props.favouriteComponent;
-  
-  
 
   return (
     <div className="movie">
@@ -33,20 +31,20 @@ const Movie = (props) => {
                   <span> Year: {movie.Year}</span>
                   <span> Type: {movie.Type}</span>
                 </Card.Text>
-                <div onClick={() => {props.handleFavouritesClick(movie)
-                  window.scrollTo({ behavior: "smooth" });
-                }}>
-                <FavouriteComponent/>
+                <div className="overlay"
+                  onClick={() => {
+                    props.handleFavouritesClick(movie);
+                    window.scrollTo({ behavior: "smooth" });
+                  }}
+                >
+                  <FavouriteComponent />
                 </div>
-              
-             
               </Card.Body>
             </Card>
           </Col>
         </Row>
       ))}
     </div>
-    
   );
 };
 

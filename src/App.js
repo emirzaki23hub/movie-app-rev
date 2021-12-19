@@ -25,12 +25,12 @@ function App() {
       });
   }, []);
 
-  const search = (searchValue) => {
+  const search = (search) => {
     dispatch({
       type: "SEARCH_MOVIES_REQUEST",
     });
 
-    fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=83b6585a`)
+    fetch(`https://www.omdbapi.com/?s=${search}&apikey=83b6585a`)
       .then((response) => response.json())
       .then((jsonResponse) => {
         if (jsonResponse.Response === "True") {
