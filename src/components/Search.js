@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Button } from "react-bootstrap";
-import "./styles/Search.css";
+import { Button, Form  } from "react-bootstrap";
+import "../styles/Search.css";
 
 const Search = (props) => {
   const [search, setSearch] = useState("");
@@ -20,7 +20,7 @@ const Search = (props) => {
   };
 
   return (
-    <form className="search">
+    <Form className="search">
       <input
         className="input"
         value={search}
@@ -32,7 +32,7 @@ const Search = (props) => {
         {" "}
         Search{" "}
       </Button>
-    </form>
+    </Form>
   );
 };
 

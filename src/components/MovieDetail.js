@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { CloseButton, Col, Container } from "react-bootstrap";
-import "./styles/Detail.css"
+import "../styles/Detail.css"
 
 
 const MovieDetail = (props) => {

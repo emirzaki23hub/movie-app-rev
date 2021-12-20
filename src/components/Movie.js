@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Row, Col } from "react-bootstrap";
-import "./styles/Movie.css";
+import "../styles/Movie.css";
 
 const Movie = (props) => {
   const FavouriteComponent = props.favouriteComponent;

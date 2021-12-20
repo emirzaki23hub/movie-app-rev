@@ -38,10 +38,6 @@ function App() {
             type: "SEARCH_MOVIES_SUCCESS",
             payload: jsonResponse.Search,
           });
-        } else {
-          dispatch({
-            type: "SEARCH_MOVIES_FAILURE",
-          });
         }
       });
   };

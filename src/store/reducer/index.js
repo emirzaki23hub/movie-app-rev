@@ -13,10 +13,6 @@ export const reducer = (state, action) => {
         ...state,
         movies: action.payload,
       };
-    case "SEARCH_MOVIES_FAILURE":
-      return {
-        ...state,
-      };
     default:
       return state;
   }
