@@ -1,6 +1,36 @@
+
 * {
     margin: 0;
     padding: 0;
 }
+
+.app {
+    background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.movies {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 30px;
+    gap: 15px;
+    justify-content: space-evenly;
+}
+
+.spinner {
+    height: 80px;
+    margin: auto;
+  }
+
+  
+.errorMessage {
+    margin: auto;
+    font-weight: bold;
+    color: rgb(161, 15, 15);
+    text-align: center;
+    font-size: 50px;
+  }
 
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useReducer } from "react";
 import "./App.css";
+import loader from "./assets/Spin.gif"
 import { initialState, reducer } from "./store/reducer";
 import Header from "./components/Header";
 import Movie from "./components/Movie";
@@ -25,18 +26,23 @@ function App() {
       });
   }, []);
 
-  const search = (search) => {
+  const search = (searchValue) => {
     dispatch({
       type: "SEARCH_MOVIES_REQUEST",
     });
 
-    fetch(`https://www.omdbapi.com/?s=${search}&apikey=83b6585a`)
+    fetch(`https://www.omdbapi.com/?s=${searchValue}&apikey=83b6585a`)
       .then((response) => response.json())
       .then((jsonResponse) => {
         if (jsonResponse.Response === "True") {
           dispatch({
             type: "SEARCH_MOVIES_SUCCESS",
             payload: jsonResponse.Search,
+          });
+        } else {
+          dispatch({
+            type: "SEARCH_MOVIES_FAILURE",
+            error: jsonResponse.Error,
           });
         }
       });
@@ -71,7 +77,7 @@ function App() {
     saveToLocalStorage(newFavouriteList);
   };
 
-  const { movies } = state;
+  const { movies, errorMessage, loading } = state;
 
   return (
     <div className="App">
@@ -83,13 +89,20 @@ function App() {
         />
       )}
 
-      <Movie
-        movies={movies}
-        handleFavouritesClick={addFavouriteMovie}
-        favouriteComponent={AddFavourites}
-        onMovieSelect={onMovieSelect}
-      />
-
+<div className="movies">
+      {loading && !errorMessage ? (
+        <img className="spinner" src={loader} alt="Loading spinner" />
+      ) : errorMessage ? (
+        <div className="errorMessage">{errorMessage}</div>
+      ) : (
+        <Movie
+          movies={movies}
+          handleFavouritesClick={addFavouriteMovie}
+          favouriteComponent={AddFavourites}
+          onMovieSelect={onMovieSelect}
+        />
+      )}
+      </div>
       <div className="container">
         <hr />
         <h1>Favourites</h1>
